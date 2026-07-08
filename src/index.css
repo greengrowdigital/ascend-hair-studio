@@ -1,0 +1,213 @@
+@import 'tailwindcss';
+
+/* =========================================================================
+   ASCEND HAIR STUDIO — Design System
+   "Obsidian Botanical": monochrome luxury (echoing the ASCEND emblem)
+   warmed by a natural sage accent and porcelain light.
+   ========================================================================= */
+
+@theme {
+  /* — Core palette — */
+  --color-ink: #0b0c0e; /* near-black background */
+  --color-obsidian: #101216; /* elevated dark surfaces */
+  --color-charcoal: #171a1f; /* cards on dark */
+  --color-graphite: #22262c; /* borders / hairlines on dark */
+
+  --color-porcelain: #f5f2eb; /* light background */
+  --color-cream: #ece7dc; /* secondary light surface */
+  --color-linen: #e2dccf; /* light borders */
+
+  --color-sage: #8a9b6e; /* primary botanical accent */
+  --color-sage-light: #a9b98f;
+  --color-sage-deep: #5f6e4a;
+  --color-moss: #3c4632;
+
+  --color-chrome: #c7ccd1; /* metallic silver (logo echo) */
+  --color-mist: #9ba1a6; /* muted text on dark — ~7.5:1 on ink */
+  --color-stone: #8d9298; /* faint text — WCAG AA (~6.2:1 ink, ~5.6:1 charcoal) */
+  --color-slate: #8a9096; /* faintest text — still AA on dark surfaces (~6:1) */
+
+  /* — Type families — */
+  --font-display: 'Michroma', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
+  --font-geo: 'Sora', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* — Motion — */
+  --ease-lux: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* — Radius scale (peer elements share a role → share a radius) — */
+  --radius-field: 0.75rem; /* inputs */
+  --radius-card: 1.75rem; /* product / service / feature cards */
+  --radius-panel: 2rem; /* form + info panels */
+  --radius-hero: 2.5rem; /* large feature bands */
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-porcelain);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-sage);
+    color: var(--color-ink);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-graphite);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-sage-deep);
+  }
+
+  h1, h2, h3, h4 {
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* =========================================================================
+   Utilities
+   ========================================================================= */
+@layer utilities {
+  /* Eyebrow / stencil label */
+  .label-stencil {
+    font-family: var(--font-display);
+    font-size: 0.66rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+  }
+
+  /* Fluid hero type — caps at viewport min so laptops don't overflow 100vh */
+  .type-hero {
+    font-size: clamp(2.75rem, min(11vw, 13vh), 8.5rem);
+    line-height: 0.95;
+  }
+  .type-display {
+    font-size: clamp(2rem, min(6.5vw, 8vh), 4.75rem);
+    line-height: 1.02;
+  }
+
+  /* Chrome / metallic text (echoes the silver ASCEND emblem) */
+  .text-chrome-gradient {
+    background: linear-gradient(
+      175deg,
+      #ffffff 0%,
+      #d7dbdf 30%,
+      #9ba1a6 55%,
+      #eef1f3 78%,
+      #b9bec3 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .bg-radial-spot {
+    background: radial-gradient(
+      ellipse 60% 55% at 50% 0%,
+      rgba(138, 155, 110, 0.16),
+      transparent 70%
+    );
+  }
+
+  .divider-hair {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-graphite) 20%,
+      var(--color-graphite) 80%,
+      transparent
+    );
+  }
+
+  /* Grain overlay (kills flat digital gradients) */
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .hover-lift {
+    transition: transform 0.4s var(--ease-lux);
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* =========================================================================
+   Keyframes
+   ========================================================================= */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 34s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.82);
+  }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2.4s var(--ease-lux) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
