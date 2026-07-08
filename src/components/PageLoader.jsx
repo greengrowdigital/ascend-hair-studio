@@ -51,7 +51,7 @@ export default function PageLoader() {
             />
           </motion.svg>
           <motion.span
-            className="text-chrome-gradient mt-6 font-display text-[0.7rem] tracking-[0.5em]"
+            className="mt-6 font-display text-[0.7rem] tracking-[0.5em] text-chrome"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.5 }}

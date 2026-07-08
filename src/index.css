@@ -27,12 +27,16 @@
   --color-stone: #8d9298; /* faint text — WCAG AA (~6.2:1 ink, ~5.6:1 charcoal) */
   --color-slate: #8a9096; /* faintest text — still AA on dark surfaces (~6:1) */
 
-  /* — Type families — */
-  --font-display: 'Michroma', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
-  --font-geo: 'Sora', ui-sans-serif, system-ui, sans-serif;
-  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  /* — Type families —
+     Michroma is quarantined to the literal "ASCEND" wordmark (ASCII-safe, echoes
+     the client's wide-geometric ring logo). Archivo — a wide technical grotesk
+     with a variable width axis and full Czech + Spanish diacritics — is the
+     single workhorse for everything else, carried by weight/width contrast. */
+  --font-display: 'Michroma', ui-sans-serif, system-ui, sans-serif; /* wordmark only */
+  --font-serif: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* headlines */
+  --font-geo: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* labels · nav · buttons */
+  --font-body: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* body */
+  --font-mono: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* figures · data */
 
   /* — Motion — */
   --ease-lux: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -98,38 +102,28 @@
    Utilities
    ========================================================================= */
 @layer utilities {
-  /* Eyebrow / stencil label */
+  /* Eyebrow / technical label (Archivo, so Czech/Spanish diacritics render) */
   .label-stencil {
-    font-family: var(--font-display);
-    font-size: 0.66rem;
-    letter-spacing: 0.42em;
+    font-family: var(--font-geo);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
   }
 
-  /* Fluid hero type — caps at viewport min so laptops don't overflow 100vh */
+  /* Fluid hero type — wide technical grotesk. Caps at viewport min so laptops
+     don't overflow 100vh, and at ~6.25rem so the page speaks, not shouts. */
   .type-hero {
-    font-size: clamp(2.75rem, min(11vw, 13vh), 8.5rem);
-    line-height: 0.95;
+    font-size: clamp(2.6rem, min(9.5vw, 12vh), 6.5rem);
+    line-height: 0.98;
+    font-stretch: 115%;
+    letter-spacing: -0.015em;
   }
   .type-display {
-    font-size: clamp(2rem, min(6.5vw, 8vh), 4.75rem);
-    line-height: 1.02;
-  }
-
-  /* Chrome / metallic text (echoes the silver ASCEND emblem) */
-  .text-chrome-gradient {
-    background: linear-gradient(
-      175deg,
-      #ffffff 0%,
-      #d7dbdf 30%,
-      #9ba1a6 55%,
-      #eef1f3 78%,
-      #b9bec3 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    font-size: clamp(1.9rem, min(6vw, 7.5vh), 4.25rem);
+    line-height: 1.04;
+    font-stretch: 112%;
+    letter-spacing: -0.012em;
   }
 
   .bg-radial-spot {

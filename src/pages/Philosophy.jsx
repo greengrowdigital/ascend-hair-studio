@@ -64,7 +64,7 @@ export default function Philosophy() {
           </Reveal>
           <h2 className="mt-10 font-serif text-4xl font-light leading-tight text-porcelain sm:text-6xl">
             <span className="text-mist">{t('philosophy.manifestoBigPre')} </span>
-            <WordReveal text={t('philosophy.manifestoBig')} className="italic text-sage-light" />
+            <WordReveal text={t('philosophy.manifestoBig')} className="text-sage-light" />
           </h2>
         </div>
       </section>
@@ -102,8 +102,7 @@ export default function Philosophy() {
       <section className="border-t border-graphite bg-obsidian px-6 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
-            <SectionLabel>{t('philosophy.ingredientsLabel')}</SectionLabel>
-            <Reveal as="h2" className="type-display mt-5 font-serif font-light text-porcelain">
+            <Reveal as="h2" className="type-display font-serif font-light text-porcelain">
               {t('philosophy.ingredientsTitle')}
             </Reveal>
           </div>
@@ -146,8 +145,7 @@ export default function Philosophy() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/60" />
             <div className="relative z-10">
-              <SectionLabel>{t('philosophy.madeLabel')}</SectionLabel>
-              <Reveal as="h2" className="type-display mt-5 font-serif font-light text-porcelain">
+              <Reveal as="h2" className="type-display font-serif font-light text-porcelain">
                 {t('philosophy.madeTitle')} <span className="text-sage-light">🇨🇿</span>
               </Reveal>
               <Reveal as="p" delay={0.1} className="mt-5 max-w-md font-body text-base font-light leading-relaxed text-mist">

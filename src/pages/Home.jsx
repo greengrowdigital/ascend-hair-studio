@@ -75,7 +75,7 @@ export default function Home() {
             </motion.span>
             <motion.span
               {...fade(0.34)}
-              className="block font-serif font-light italic text-sage-light"
+              className="block font-serif font-light text-sage-light"
             >
               {t('hero.line2')}
             </motion.span>
@@ -122,8 +122,7 @@ export default function Home() {
       <section className="relative bg-ink px-6 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-2">
           <div>
-            <SectionLabel>{t('home.promiseLabel')}</SectionLabel>
-            <Reveal as="h2" className="type-display mt-6 font-serif font-light text-porcelain">
+            <Reveal as="h2" className="type-display font-serif font-light text-porcelain">
               {t('home.promiseTitle')}
             </Reveal>
             <Reveal
@@ -171,8 +170,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
-              <SectionLabel>{t('home.featuredLabel')}</SectionLabel>
-              <Reveal as="h2" className="type-display mt-5 font-serif font-light text-porcelain">
+              <Reveal as="h2" className="type-display font-serif font-light text-porcelain">
                 {t('home.featuredTitle')}
               </Reveal>
             </div>
@@ -209,7 +207,7 @@ export default function Home() {
                 className="group flex flex-col bg-charcoal p-8 transition-colors duration-500 hover:bg-obsidian"
               >
                 <span className="font-mono text-sm text-sage">{step.id}</span>
-                <span className="mt-6 font-display text-[0.7rem] tracking-[0.28em] text-porcelain">
+                <span className="mt-6 font-geo text-[0.72rem] font-medium tracking-[0.24em] text-porcelain">
                   {step.name[lang].toUpperCase()}
                 </span>
                 <p className="mt-3 font-body text-sm font-light leading-relaxed text-mist">
@@ -227,8 +225,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
-              <SectionLabel>{t('home.servicesLabel')}</SectionLabel>
-              <Reveal as="h2" className="type-display mt-5 max-w-xl font-serif font-light text-porcelain">
+              <Reveal as="h2" className="type-display max-w-xl font-serif font-light text-porcelain">
                 {t('home.servicesTitle')}
               </Reveal>
             </div>
@@ -259,10 +256,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/70 to-ink/90" />
             <div className="relative z-10">
-              <div className="flex justify-center">
-                <SectionLabel align="center">{t('home.ctaBandLabel')}</SectionLabel>
-              </div>
-              <Reveal as="h2" className="type-display mx-auto mt-6 max-w-2xl font-serif font-light italic text-porcelain">
+              <Reveal as="h2" className="type-display mx-auto max-w-2xl font-serif font-light text-porcelain">
                 {t('home.ctaBandTitle')}
               </Reveal>
               <Reveal as="p" delay={0.1} className="mx-auto mt-5 max-w-md font-body text-base font-light text-mist">

@@ -20,7 +20,7 @@ export default function LanguageToggle({ compact = false }) {
             aria-pressed={active}
             aria-label={name}
             className={`rounded-full font-geo tracking-[0.12em] transition-all duration-300 ${
-              compact ? 'px-2 py-1 text-[0.62rem]' : 'px-2.5 py-1 text-[0.66rem]'
+              compact ? 'px-2.5 py-2 text-[0.64rem]' : 'px-3 py-2 text-[0.68rem]'
             } ${
               active
                 ? 'bg-sage text-ink font-medium'

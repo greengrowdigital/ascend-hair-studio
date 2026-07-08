@@ -12,8 +12,8 @@ export default function NotFound() {
         <span className="text-sage">
           <Logo size={44} showWord={false} />
         </span>
-        <h1 className="type-hero mt-8 font-serif font-light italic text-porcelain">404</h1>
-        <p className="mt-5 font-display text-[0.72rem] tracking-[0.3em] text-sage">
+        <h1 className="type-hero mt-8 font-serif font-light text-porcelain">404</h1>
+        <p className="mt-5 font-geo text-[0.72rem] font-medium tracking-[0.28em] text-sage">
           {t('notFound.title').toUpperCase()}
         </p>
         <p className="mt-4 max-w-sm font-body font-light text-mist">{t('notFound.body')}</p>

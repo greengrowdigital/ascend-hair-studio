@@ -189,7 +189,7 @@ export default function Contact() {
                     key={label}
                     href="#"
                     aria-label={label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-graphite text-mist transition-all hover:border-sage hover:text-sage"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-graphite text-mist transition-all hover:border-sage hover:text-sage"
                   >
                     <Icon size={16} />
                   </a>

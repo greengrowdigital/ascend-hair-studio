@@ -31,7 +31,7 @@ export default function Footer() {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-graphite text-mist transition-all duration-300 hover:border-sage hover:text-sage"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-graphite text-mist transition-all duration-300 hover:border-sage hover:text-sage"
               >
                 <Icon size={16} />
               </a>
@@ -83,7 +83,7 @@ export default function Footer() {
               <button
                 type="submit"
                 aria-label={t('footer.newsletterBtn')}
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sage text-ink transition-transform hover:scale-105"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sage text-ink transition-transform hover:scale-105"
               >
                 {subscribed ? <Check size={15} /> : <ArrowRight size={15} />}
               </button>

@@ -23,7 +23,10 @@ Built by **GreenGrow Digital** as a client demo.
 - **Premium motion**: intro loader (drawn ASCEND emblem), floating morphing navbar,
   scroll-progress bar, parallax hero, word-by-word manifesto reveal, film grain
 - **Design system**: "Obsidian Botanical" — monochrome luxury echoing the ASCEND
-  emblem, warmed by a sage accent. Type: Michroma · Fraunces · Sora · Inter · IBM Plex Mono
+  emblem, warmed by a sage accent. Type: **Michroma** (wordmark only) +
+  **Archivo** (a wide technical grotesk carried on weight/width contrast) — a
+  geometric-technical voice that echoes the ring logo rather than a generic
+  editorial serif.
 
 ## Local development
 
