@@ -4,21 +4,21 @@ import { Instagram, Facebook, Mail, ArrowRight, Check } from 'lucide-react'
 import Logo from './Logo.jsx'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 
+const YEAR = 2026
+
 export default function Footer() {
   const { t } = useI18n()
   const [subscribed, setSubscribed] = useState(false)
 
-  const year = 2026
-
   return (
-    <footer className="relative mt-px rounded-t-[2.5rem] border-t border-graphite bg-obsidian pt-16 sm:rounded-t-[3.5rem] sm:pt-20">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+    <footer className="border-t border-line bg-snow px-6 pt-16 sm:px-8 sm:pt-20">
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
         {/* Brand */}
         <div>
-          <Link to="/" className="text-porcelain">
-            <Logo size={34} />
+          <Link to="/" className="text-ink">
+            <Logo className="text-base" />
           </Link>
-          <p className="mt-5 max-w-xs font-body text-sm font-light leading-relaxed text-mist">
+          <p className="mt-5 max-w-xs font-body text-sm font-light leading-relaxed text-stone">
             {t('footer.tagline')}
           </p>
           <div className="mt-6 flex items-center gap-3">
@@ -31,7 +31,7 @@ export default function Footer() {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-graphite text-mist transition-all duration-300 hover:border-sage hover:text-sage"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-stone transition-all duration-300 hover:border-sage hover:text-sage-deep"
               >
                 <Icon size={16} />
               </a>
@@ -39,25 +39,23 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Explore */}
-        <nav aria-label={t('footer.explore')}>
-          <h4 className="label-stencil text-stone">{t('footer.explore')}</h4>
-          <ul className="mt-5 space-y-3 font-geo text-sm text-mist">
-            <li><Link to="/products" className="transition-colors hover:text-porcelain">{t('nav.products')}</Link></li>
-            <li><Link to="/services" className="transition-colors hover:text-porcelain">{t('nav.services')}</Link></li>
-            <li><Link to="/philosophy" className="transition-colors hover:text-porcelain">{t('nav.philosophy')}</Link></li>
-            <li><Link to="/contact" className="transition-colors hover:text-porcelain">{t('nav.contact')}</Link></li>
+        {/* Shop */}
+        <nav aria-label={t('footer.shop')}>
+          <h4 className="label-stencil text-stone">{t('footer.shop')}</h4>
+          <ul className="mt-5 space-y-3 font-geo text-sm text-slate">
+            <li><Link to="/shop" className="transition-colors hover:text-ink">{t('nav.shop')}</Link></li>
+            <li><Link to="/science" className="transition-colors hover:text-ink">{t('nav.science')}</Link></li>
+            <li><Link to="/contact" className="transition-colors hover:text-ink">{t('nav.contact')}</Link></li>
           </ul>
         </nav>
 
-        {/* Studio */}
+        {/* Info */}
         <div>
-          <h4 className="label-stencil text-stone">{t('footer.studio')}</h4>
-          <ul className="mt-5 space-y-3 font-body text-sm font-light text-mist">
+          <h4 className="label-stencil text-stone">{t('footer.connect')}</h4>
+          <ul className="mt-5 space-y-3 font-body text-sm font-light text-slate">
             <li>{t('contact.hours')}</li>
-            <li>{t('contact.address')}</li>
-            <li>+420 212 340 118</li>
-            <li>ahoj@ascendstudio.cz</li>
+            <li>{t('contact.mapLocation')}</li>
+            <li>ahoj@ascendclay.cz</li>
           </ul>
         </div>
 
@@ -71,28 +69,27 @@ export default function Footer() {
               setSubscribed(true)
             }}
           >
-            <div className="flex items-center gap-2 border-b border-graphite pb-2 transition-colors focus-within:border-sage">
+            <div className="flex items-center gap-2 border-b border-line pb-2 transition-colors focus-within:border-sage">
               <input
                 type="email"
+                id="footer-newsletter-email"
+                name="email"
                 required
                 disabled={subscribed}
                 placeholder={t('footer.newsletterPlaceholder')}
                 aria-label={t('footer.newsletterPlaceholder')}
-                className="w-full bg-transparent font-body text-sm text-porcelain placeholder:text-stone focus:outline-none"
+                autoComplete="email"
+                className="w-full bg-transparent font-body text-sm text-ink placeholder:text-stone focus:outline-none"
               />
               <button
                 type="submit"
                 aria-label={t('footer.newsletterBtn')}
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sage text-ink transition-transform hover:scale-105"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-white transition-transform hover:scale-105"
               >
                 {subscribed ? <Check size={15} /> : <ArrowRight size={15} />}
               </button>
             </div>
-            <p
-              role="status"
-              aria-live="polite"
-              className="mt-3 min-h-[1rem] font-geo text-xs tracking-wide text-sage"
-            >
+            <p role="status" aria-live="polite" className="mt-3 min-h-[1rem] font-geo text-xs text-sage-deep">
               {subscribed ? `✓ ${t('contact.successTitle')}` : ''}
             </p>
           </form>
@@ -100,22 +97,20 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="mx-auto mt-14 max-w-6xl px-6 sm:px-8">
+      <div className="mx-auto mt-14 max-w-6xl">
         <div className="divider-hair" />
         <div className="flex flex-col items-center justify-between gap-4 py-7 sm:flex-row">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-geo text-xs text-stone">
-            <span>© {year} Ascend Hair Studio</span>
-            <span className="hidden sm:inline text-graphite">·</span>
+            <span>© {YEAR} ASCEND</span>
+            <span className="hidden text-line sm:inline">·</span>
             <span>{t('footer.made')} 🇨🇿</span>
           </div>
-          <div className="flex items-center gap-2 font-geo text-xs text-mist">
+          <div className="flex items-center gap-2 font-geo text-xs text-slate">
             <span className="h-2 w-2 rounded-full bg-sage animate-pulse-dot" />
             {t('footer.status')}
           </div>
         </div>
-        <p className="pb-8 text-center font-geo text-[0.68rem] tracking-wide text-slate sm:text-left">
-          {t('footer.demo')}
-        </p>
+        <p className="pb-8 text-center font-geo text-[0.68rem] text-stone sm:text-left">{t('footer.demo')}</p>
       </div>
     </footer>
   )

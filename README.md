@@ -1,7 +1,8 @@
-# Ascend Hair Studio — Demo
+# ASCEND — Matte Clay (Demo)
 
-Cinematic, multilingual demo site for **Ascend Hair Studio** — natural hair care
-made in Czechia (_Vyrobeno v Česku_, 100% natural formula, no needless chemicals).
+Apple-style, multilingual product site + demo shop for **ASCEND Hair Matte Clay**
+— a matte hair clay made in Czechia (_Vyrobeno v Česku_, 92% natural, strong
+restylable hold).
 
 Built by **GreenGrow Digital** as a client demo.
 
@@ -9,24 +10,38 @@ Built by **GreenGrow Digital** as a client demo.
 
 - **Vite + React 19**
 - **Tailwind CSS v4** (`@tailwindcss/vite`)
-- **Framer Motion** (page transitions, scroll reveals, magnetic buttons, marquee)
+- **Framer Motion** (scroll-scrubbed hero, reveals, cart drawer, page crossfades)
 - **React Router DOM** (multi-page)
 - **Lucide React** (icons)
 
-## Features
+## Experience
 
-- **Multi-page**: Home · Products · Services · Philosophy · Contact (+ 404)
-- **Trilingual**: Čeština (default) · English · Español — persisted in `localStorage`,
-  with automatic detection from the browser language
-- **Responsive** across mobile / tablet / laptop / desktop XL; the hero fits in
-  `100svh` on short laptops via fluid `clamp()` typography
-- **Premium motion**: intro loader (drawn ASCEND emblem), floating morphing navbar,
-  scroll-progress bar, parallax hero, word-by-word manifesto reveal, film grain
-- **Design system**: "Obsidian Botanical" — monochrome luxury echoing the ASCEND
-  emblem, warmed by a sage accent. Type: **Michroma** (wordmark only) +
-  **Archivo** (a wide technical grotesk carried on weight/width contrast) — a
-  geometric-technical voice that echoes the ring logo rather than a generic
-  editorial serif.
+- **Cinematic home**: a full-screen ASCEND wordmark knocked out over the hero
+  video, then a scroll-driven white → black morph that reveals the product tin,
+  followed by the product story. Scroll stays free while the video plays; the
+  pill navbar fades in early and adapts its colour to the surface underneath.
+- **Demo shop** (`/shop`): Apple-style product page — gallery, size selector
+  (50 / 100 g / duo), quantity, add-to-bag, specs, and FAQ.
+- **Cart + checkout**: slide-over cart drawer with a persistent (localStorage)
+  bag, plus a full demo checkout flow (shipping form → order confirmation).
+  Nothing is charged.
+- **Formula** (`/science`) and **Contact** pages, plus a 404.
+- **Trilingual**: Čeština (default) · English · Español — persisted in
+  `localStorage`, auto-detected from the browser.
+- **Responsive** mobile → desktop XL; the hero fits `100svh` on short laptops.
+- **Design system**: "Apple light-first + product noir" — white, precise store
+  surfaces with true-black storytelling. Type: **Michroma** (the ASCEND
+  wordmark, recreated from the brand logotype) + **Archivo** (the workhorse).
+  Sage/olive is the single botanical accent.
+
+## Assets (client-supplied)
+
+- `public/hero.mp4` — hero video (plays once, behind the knockout wordmark).
+- `public/product/clay-diagonal.png` — three-quarter tin (transparent).
+- `public/product/clay-top.png` — open tin, top-down (transparent).
+
+To swap the product shots, drop new PNGs at those paths. `<ProductImage>` falls
+back to an inline SVG tin if a file is missing, so the layout never breaks.
 
 ## Local development
 
@@ -39,11 +54,9 @@ npm run preview  # preview the build
 
 ## Deploy
 
-Vercel-ready — `vercel.json` includes SPA rewrites. No environment variables required.
+Vercel-ready — `vercel.json` includes SPA rewrites. No environment variables.
 
 ## Notes
 
-- Product prices and the contact form are for demonstration only (the form does not
-  send real data).
-- Imagery is sourced from Unsplash as placeholders; swap for the client's real photos
-  when available.
+- Prices and the checkout are for demonstration only (no payment is processed).
+- Lifestyle/texture imagery is Unsplash; the product shots are the client's.

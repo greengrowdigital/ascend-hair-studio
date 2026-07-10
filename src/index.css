@@ -1,52 +1,57 @@
 @import 'tailwindcss';
 
 /* =========================================================================
-   ASCEND HAIR STUDIO — Design System
-   "Obsidian Botanical": monochrome luxury (echoing the ASCEND emblem)
-   warmed by a natural sage accent and porcelain light.
+   ASCEND — Design System
+   A single product: ASCEND Sculpting Clay.
+   Register: "Apple light-first + product noir". White, precise, generous
+   whitespace for the store; true-black storytelling for the product hero.
+   Sage/olive is the single botanical accent (the clay is natural).
    ========================================================================= */
 
 @theme {
-  /* — Core palette — */
-  --color-ink: #0b0c0e; /* near-black background */
-  --color-obsidian: #101216; /* elevated dark surfaces */
-  --color-charcoal: #171a1f; /* cards on dark */
-  --color-graphite: #22262c; /* borders / hairlines on dark */
+  /* — Dark surfaces (product noir) — */
+  --color-ink: #0b0c0e; /* near-black page / product hero base */
+  --color-black: #000000; /* true black — deepest hero end */
+  --color-carbon: #121317; /* elevated dark surface / dark cards */
+  --color-graphite: #262a30; /* borders / hairlines on dark */
+  --color-mist: #a7acb3; /* body text on dark (~8:1 on ink) */
+  --color-ash: #8b9198; /* muted text on dark (AA ~5.4:1) */
 
-  --color-porcelain: #f5f2eb; /* light background */
-  --color-cream: #ece7dc; /* secondary light surface */
-  --color-linen: #e2dccf; /* light borders */
+  /* — Light surfaces (Apple store) — */
+  --color-white: #ffffff;
+  --color-snow: #f5f5f7; /* apple-grey page bg */
+  --color-cloud: #ececef; /* secondary light surface */
+  --color-line: #d7d8dd; /* borders / hairlines on light */
+  --color-slate: #33363b; /* body text on light (~11:1 on white) */
+  --color-stone: #5b5f66; /* muted text on light (AA ~5.8:1 on white) */
 
-  --color-sage: #8a9b6e; /* primary botanical accent */
-  --color-sage-light: #a9b98f;
-  --color-sage-deep: #5f6e4a;
-  --color-moss: #3c4632;
+  /* — Botanical accent (olive/sage) — */
+  --color-sage: #7f9161; /* mid — fills, chips, icons */
+  --color-sage-deep: #4f5e40; /* accent text on light (AA ~6:1 on white) */
+  --color-sage-light: #aebd95; /* accent on dark surfaces */
+  --color-moss: #3a4531; /* deepest olive */
 
   --color-chrome: #c7ccd1; /* metallic silver (logo echo) */
-  --color-mist: #9ba1a6; /* muted text on dark — ~7.5:1 on ink */
-  --color-stone: #8d9298; /* faint text — WCAG AA (~6.2:1 ink, ~5.6:1 charcoal) */
-  --color-slate: #8a9096; /* faintest text — still AA on dark surfaces (~6:1) */
 
   /* — Type families —
-     Michroma is quarantined to the literal "ASCEND" wordmark (ASCII-safe, echoes
-     the client's wide-geometric ring logo). Archivo — a wide technical grotesk
-     with a variable width axis and full Czech + Spanish diacritics — is the
-     single workhorse for everything else, carried by weight/width contrast. */
-  --font-display: 'Michroma', ui-sans-serif, system-ui, sans-serif; /* wordmark only */
+     Michroma is quarantined to the "ASCEND" wordmark (ASCII-safe, echoes the
+     wide-geometric ring logo). Archivo — a technical grotesk with a variable
+     width axis and full Czech + Spanish diacritics — is the single workhorse. */
+  --font-display: 'Michroma', ui-sans-serif, system-ui, sans-serif; /* wordmark */
   --font-serif: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* headlines */
-  --font-geo: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* labels · nav · buttons */
+  --font-geo: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* labels · nav · UI */
   --font-body: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* body */
-  --font-mono: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* figures · data */
+  --font-mono: 'Archivo', ui-sans-serif, system-ui, sans-serif; /* figures · specs */
 
   /* — Motion — */
   --ease-lux: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* — Radius scale (peer elements share a role → share a radius) — */
+  /* — Radius scale (Apple-moderate; peers share a role → share a radius) — */
   --radius-field: 0.75rem; /* inputs */
-  --radius-card: 1.75rem; /* product / service / feature cards */
-  --radius-panel: 2rem; /* form + info panels */
-  --radius-hero: 2.5rem; /* large feature bands */
+  --radius-card: 1.25rem; /* product / feature cards */
+  --radius-panel: 1.5rem; /* panels / sheets */
+  --radius-hero: 2rem; /* large feature bands */
 }
 
 /* =========================================================================
@@ -64,37 +69,38 @@
   }
 
   body {
-    background-color: var(--color-ink);
-    color: var(--color-porcelain);
+    background-color: var(--color-white);
+    color: var(--color-ink);
     font-family: var(--font-body);
-    font-weight: 300;
-    line-height: 1.6;
+    font-weight: 400;
+    line-height: 1.55;
     overflow-x: hidden;
   }
 
   ::selection {
     background-color: var(--color-sage);
-    color: var(--color-ink);
+    color: var(--color-white);
   }
 
-  /* Custom scrollbar */
+  /* Neutral scrollbar (light) */
   ::-webkit-scrollbar {
-    width: 9px;
+    width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-ink);
+    background: var(--color-snow);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-graphite);
+    background: var(--color-line);
     border-radius: 999px;
+    border: 2px solid var(--color-snow);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-sage-deep);
+    background: #c2c3ca;
   }
 
   h1, h2, h3, h4 {
-    line-height: 1.02;
-    letter-spacing: -0.02em;
+    line-height: 1.05;
+    letter-spacing: -0.022em;
   }
 }
 
@@ -102,57 +108,68 @@
    Utilities
    ========================================================================= */
 @layer utilities {
-  /* Eyebrow / technical label (Archivo, so Czech/Spanish diacritics render) */
+  /* Sparingly-used technical label */
   .label-stencil {
     font-family: var(--font-geo);
     font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
   }
 
-  /* Fluid hero type — wide technical grotesk. Caps at viewport min so laptops
-     don't overflow 100vh, and at ~6.25rem so the page speaks, not shouts. */
+  /* Fluid display type — neutral-width grotesk. Caps at viewport min so short
+     laptops don't overflow 100vh, and at ~5.5rem so the page speaks. */
+  .type-mega {
+    font-size: clamp(3rem, min(12vw, 15vh), 8rem);
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+  }
   .type-hero {
-    font-size: clamp(2.6rem, min(9.5vw, 12vh), 6.5rem);
-    line-height: 0.98;
-    font-stretch: 115%;
-    letter-spacing: -0.015em;
+    font-size: clamp(2.4rem, min(8vw, 10vh), 5.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.024em;
   }
   .type-display {
-    font-size: clamp(1.9rem, min(6vw, 7.5vh), 4.25rem);
-    line-height: 1.04;
-    font-stretch: 112%;
-    letter-spacing: -0.012em;
+    font-size: clamp(1.8rem, min(5.2vw, 6.5vh), 3.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
   }
 
-  .bg-radial-spot {
-    background: radial-gradient(
-      ellipse 60% 55% at 50% 0%,
-      rgba(138, 155, 110, 0.16),
-      transparent 70%
-    );
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Tabular figures for prices / specs (no width jitter) */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
   }
 
   .divider-hair {
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-graphite) 20%,
-      var(--color-graphite) 80%,
-      transparent
+    background: var(--color-line);
+  }
+
+  /* Soft radial glow behind the product on dark surfaces */
+  .bg-radial-spot {
+    background: radial-gradient(
+      ellipse 60% 55% at 50% 50%,
+      rgba(174, 189, 149, 0.22),
+      transparent 70%
     );
   }
 
-  /* Grain overlay (kills flat digital gradients) */
-  .grain::after {
+  /* Local film grain (used only inside dark hero sections) */
+  .grain-dark::after {
     content: '';
-    position: fixed;
+    position: absolute;
     inset: 0;
-    z-index: 60;
+    z-index: 1;
     pointer-events: none;
-    opacity: 0.05;
+    opacity: 0.055;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
@@ -161,7 +178,7 @@
     transition: transform 0.4s var(--ease-lux);
   }
   .hover-lift:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
 }
 
@@ -177,7 +194,7 @@
   }
 }
 .animate-marquee {
-  animation: marquee 34s linear infinite;
+  animation: marquee 36s linear infinite;
 }
 
 @keyframes pulse-dot {

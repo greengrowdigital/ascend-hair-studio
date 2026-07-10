@@ -1,12 +1,15 @@
 import { useI18n } from '../i18n/LanguageContext.jsx'
 
-/* Segmented CS · EN · ES switcher. Persisted via LanguageContext. */
-export default function LanguageToggle({ compact = false }) {
+/* Segmented CS · EN · ES switcher. `theme` matches the surface it sits on. */
+export default function LanguageToggle({ theme = 'light', compact = false }) {
   const { lang, setLang, langs } = useI18n()
+  const dark = theme === 'dark'
 
   return (
     <div
-      className="inline-flex items-center rounded-full border border-graphite bg-ink/40 p-[3px] backdrop-blur-sm"
+      className={`inline-flex items-center rounded-full border p-[3px] backdrop-blur-sm ${
+        dark ? 'border-white/15 bg-white/5' : 'border-line bg-white/70'
+      }`}
       role="group"
       aria-label="Language"
     >
@@ -19,12 +22,16 @@ export default function LanguageToggle({ compact = false }) {
             onClick={() => setLang(code)}
             aria-pressed={active}
             aria-label={name}
-            className={`rounded-full font-geo tracking-[0.12em] transition-all duration-300 ${
-              compact ? 'px-2.5 py-2 text-[0.64rem]' : 'px-3 py-2 text-[0.68rem]'
+            className={`inline-flex min-h-[36px] items-center justify-center rounded-full font-geo tracking-[0.08em] transition-all duration-300 ${
+              compact ? 'px-2.5 text-[0.68rem]' : 'px-3 text-[0.72rem]'
             } ${
               active
-                ? 'bg-sage text-ink font-medium'
-                : 'text-mist hover:text-porcelain'
+                ? dark
+                  ? 'bg-white font-semibold text-ink'
+                  : 'bg-ink font-semibold text-white'
+                : dark
+                  ? 'text-mist hover:text-white'
+                  : 'text-stone hover:text-ink'
             }`}
           >
             {label}

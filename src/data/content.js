@@ -1,246 +1,167 @@
 /* =========================================================================
-   ASCEND HAIR STUDIO — content & assets
-   Structural data lives here; per-item copy is carried inline as {cs,en,es}
-   so components can read `item.name[lang]` directly.
-   Photos: real Unsplash imagery (natural / editorial mood).
+   ASCEND — content & assets
+   One hero product: ASCEND Hair Matte Clay (the real tin — silver aluminium,
+   black lid, grey Czech clay, 100 g). Per-item copy is inline as {cs,en,es}
+   so components read `item.name[lang]` directly. Prices are NUMBERS (Kč) so
+   the cart can total.
+
+   Product shots (transparent PNGs, float on any background):
+     /product/clay-diagonal.png  — three-quarter hero angle
+     /product/clay-top.png       — open tin, top-down (shows the clay)
    ========================================================================= */
 
 const U = (slug, w = 1400) =>
   `https://images.unsplash.com/${slug}?auto=format&fit=crop&w=${w}&q=80`
 
+/* Product PNGs (client-supplied, transparent). */
+export const CLAY_DIAGONAL = '/product/clay-diagonal.png'
+export const CLAY_TOP = '/product/clay-top.png'
+
+/* Real Unsplash imagery for lifestyle / texture / science moments. */
 export const IMG = {
-  salonSilver: U('photo-1600948836101-f9ffda59d250', 1920),
-  salonChairs: U('photo-1626383137804-ff908d2753a2', 1600),
-  modelEditorial: U('photo-1536180931879-fd2d652efddc', 1400),
-  modelBlonde: U('photo-1524504388940-b1c1722653e1', 1200),
-  modelMischelle: U('photo-1523264766116-1e09b3145b84', 1200),
-  modelBeauty: U('photo-1616358278773-e5e4154a336f', 1200),
-  sageTwigs: U('photo-1726994804363-5c7ce2255254', 1600),
-  leaf: U('photo-1554929081-f8f43f603f93', 1200),
-  leaves: U('photo-1557842458-ab4b8925e3cb', 1600),
-  herbs: U('photo-1514733670139-4d87a1941d55', 1400),
-  texture1: U('photo-1748543669178-efd3de4e64e0', 1100),
-  texture2: U('photo-1748543668687-624e058c367c', 1100),
-  texture3: U('photo-1748543668646-e81cda0890f3', 1100),
-  jar: U('photo-1611073761742-bce90ccd60ae', 1100),
+  model: U('photo-1621607512214-68297480165e', 1400),
+  modelEditorial: U('photo-1503342217505-b0a15ec3261c', 1400),
   hairTexture: U('photo-1560264641-1b5191cc63e2', 1400),
   hairMacro: U('photo-1589389068756-fc2ad63f54d6', 1400),
+  clayTexture: U('photo-1620916566398-39f1143ab7be', 1200),
+  herbs: U('photo-1514733670139-4d87a1941d55', 1400),
+  leaf: U('photo-1554929081-f8f43f603f93', 1200),
+  hands: U('photo-1599110364868-364162bc1720', 1200),
 }
 
-/* — Product line (natural hair care, made in Czechia) — */
-export const PRODUCTS = [
-  {
-    id: 'root-volume',
-    img: IMG.texture1,
-    price: 'Kč 420',
-    badge: { cs: 'Bestseller', en: 'Bestseller', es: 'Más vendido' },
-    name: {
-      cs: 'Kořen & Objem',
-      en: 'Root & Volume',
-      es: 'Raíz & Volumen',
-    },
-    type: { cs: 'Šampon · 250 ml', en: 'Shampoo · 250 ml', es: 'Champú · 250 ml' },
-    tagline: {
-      cs: 'Čisticí šampon z kopřivy a rozmarýnu, který dodá vlasům objem od kořínků.',
-      en: 'A nettle-and-rosemary cleanser that lifts hair with volume from the root.',
-      es: 'Champú de ortiga y romero que aporta volumen desde la raíz.',
-    },
-    hero: { cs: 'Kopřiva', en: 'Nettle', es: 'Ortiga' },
+/* — The product — */
+export const PRODUCT = {
+  id: 'matte-clay',
+  slug: 'clay',
+  brand: 'ASCEND',
+  name: { cs: 'Matná hlína', en: 'Matte Clay', es: 'Clay Mate' },
+  category: { cs: 'Matná hlína na vlasy', en: 'Hair Matte Clay', es: 'Clay Mate para Cabello' },
+  edition: 'Nº01',
+  currency: 'Kč',
+  priceFrom: 340,
+  weight: '100 g',
+  finish: { cs: 'Matný', en: 'Matte', es: 'Mate' },
+  hold: { cs: 'Silná · 8/10', en: 'Strong · 8/10', es: 'Fuerte · 8/10' },
+  scent: { cs: 'Cedr & šalvěj', en: 'Cedar & sage', es: 'Cedro & salvia' },
+  heroImage: CLAY_DIAGONAL,
+  gallery: [CLAY_DIAGONAL, CLAY_TOP, U('photo-1621607512214-68297480165e', 1200)],
+  tagline: {
+    cs: 'Matná modelovací hlína pro celodenní držení, které kdykoli přetvoříš.',
+    en: 'A matte clay for all-day hold you can restyle anytime.',
+    es: 'Una clay mate con fijación todo el día que puedes reestilizar cuando quieras.',
   },
-  {
-    id: 'silk-serum',
-    img: IMG.jar,
-    price: 'Kč 690',
-    badge: { cs: 'Novinka', en: 'New', es: 'Nuevo' },
-    name: {
-      cs: 'Hedvábné Sérum',
-      en: 'Silk Serum',
-      es: 'Sérum Seda',
-    },
-    type: { cs: 'Sérum · 50 ml', en: 'Serum · 50 ml', es: 'Sérum · 50 ml' },
-    tagline: {
-      cs: 'Lehké sérum z konopného oleje uhlazuje roztřepené konečky bez zatížení.',
-      en: 'A weightless hemp-oil serum that seals split ends without any residue.',
-      es: 'Sérum ligero de aceite de cáñamo que sella las puntas sin apelmazar.',
-    },
-    hero: { cs: 'Konopí', en: 'Hemp', es: 'Cáñamo' },
+  intro: {
+    cs: 'Silné, ale poddajné držení. Zemitá česká hlína s konopným olejem — struktura a objem bez lesku a bez zbytečné chemie.',
+    en: 'Strong yet pliable hold. Earthy Czech clay cut with hemp oil — texture and volume with zero shine and no needless chemistry.',
+    es: 'Fijación fuerte pero maleable. Arcilla checa con aceite de cáñamo — textura y volumen sin brillo y sin química innecesaria.',
   },
+}
+
+/* — Variants (sizes, in grams) — priced in whole Kč — */
+export const VARIANTS = [
   {
-    id: 'botanical-mask',
-    img: IMG.texture2,
-    price: 'Kč 560',
+    id: '50',
+    size: '50 g',
+    price: 340,
+    label: { cs: '50 g', en: '50 g', es: '50 g' },
+    note: { cs: 'Na vyzkoušení', en: 'Try it out', es: 'Para probar' },
     badge: null,
-    name: {
-      cs: 'Botanická Maska',
-      en: 'Botanical Mask',
-      es: 'Mascarilla Botánica',
-    },
-    type: { cs: 'Maska · 200 ml', en: 'Mask · 200 ml', es: 'Mascarilla · 200 ml' },
-    tagline: {
-      cs: 'Hloubková regenerace z lopuchu a heřmánku pro suché a barvené vlasy.',
-      en: 'Deep repair with burdock and chamomile for dry, colour-treated hair.',
-      es: 'Reparación profunda con bardana y manzanilla para cabello seco o teñido.',
-    },
-    hero: { cs: 'Lopuch', en: 'Burdock', es: 'Bardana' },
   },
   {
-    id: 'daily-oil',
-    img: IMG.texture3,
-    price: 'Kč 640',
-    badge: null,
-    name: {
-      cs: 'Denní Olej',
-      en: 'Daily Oil',
-      es: 'Aceite Diario',
-    },
-    type: { cs: 'Olej · 100 ml', en: 'Oil · 100 ml', es: 'Aceite · 100 ml' },
-    tagline: {
-      cs: 'Vyživující směs studeně lisovaných olejů pro každodenní lesk.',
-      en: 'A nourishing blend of cold-pressed oils for everyday shine.',
-      es: 'Mezcla nutritiva de aceites prensados en frío para brillo diario.',
-    },
-    hero: { cs: 'Šalvěj', en: 'Sage', es: 'Salvia' },
+    id: '100',
+    size: '100 g',
+    price: 590,
+    label: { cs: '100 g', en: '100 g', es: '100 g' },
+    note: { cs: 'Vydrží ~3 měsíce', en: 'Lasts ~3 months', es: 'Dura ~3 meses' },
+    badge: { cs: 'Nejlepší hodnota', en: 'Best value', es: 'Mejor valor' },
   },
   {
-    id: 'pure-conditioner',
-    img: IMG.texture1,
-    price: 'Kč 460',
-    badge: null,
-    name: {
-      cs: 'Čistý Kondicionér',
-      en: 'Pure Conditioner',
-      es: 'Acondicionador Puro',
-    },
-    type: {
-      cs: 'Kondicionér · 250 ml',
-      en: 'Conditioner · 250 ml',
-      es: 'Acondicionador · 250 ml',
-    },
-    tagline: {
-      cs: 'Rozčesává a hydratuje bez silikonů — jen rostliny a čistá voda.',
-      en: 'Detangles and hydrates without silicones — just plants and clean water.',
-      es: 'Desenreda e hidrata sin siliconas — solo plantas y agua pura.',
-    },
-    hero: { cs: 'Heřmánek', en: 'Chamomile', es: 'Manzanilla' },
-  },
-  {
-    id: 'scalp-tonic',
-    img: IMG.jar,
-    price: 'Kč 520',
-    badge: { cs: 'Limitka', en: 'Limited', es: 'Edición limitada' },
-    name: {
-      cs: 'Bylinný Tonik',
-      en: 'Herbal Tonic',
-      es: 'Tónico Herbal',
-    },
-    type: { cs: 'Tonikum · 120 ml', en: 'Tonic · 120 ml', es: 'Tónico · 120 ml' },
-    tagline: {
-      cs: 'Osvěžující tonikum na pokožku hlavy podporující zdravý růst vlasů.',
-      en: 'A refreshing scalp tonic that supports healthy, resilient growth.',
-      es: 'Tónico refrescante para el cuero cabelludo que favorece el crecimiento.',
-    },
-    hero: { cs: 'Rozmarýn', en: 'Rosemary', es: 'Romero' },
+    id: 'duo',
+    size: '2 × 100 g',
+    price: 1090,
+    label: { cs: 'Duo · 2 × 100 g', en: 'Duo · 2 × 100 g', es: 'Dúo · 2 × 100 g' },
+    note: { cs: 'Ušetři 90 Kč', en: 'Save 90 Kč', es: 'Ahorra 90 Kč' },
+    badge: { cs: 'Duo', en: 'Duo', es: 'Dúo' },
   },
 ]
 
-/* — Studio services — */
-export const SERVICES = [
+export const DEFAULT_VARIANT = '100'
+
+/* — Apple-style product statements (the scroll story) — */
+export const FEATURES = [
   {
-    id: 'cut-styling',
-    img: IMG.modelBlonde,
-    duration: { cs: '60–90 min', en: '60–90 min', es: '60–90 min' },
-    price: 'Kč 850',
-    name: { cs: 'Střih & Styling', en: 'Cut & Styling', es: 'Corte & Estilo' },
-    desc: {
-      cs: 'Přesný střih šitý na míru vaší struktuře vlasů a stylu života.',
-      en: 'A precision cut tailored to your hair structure and the way you live.',
-      es: 'Corte de precisión adaptado a tu tipo de cabello y estilo de vida.',
+    id: 'matte',
+    kicker: { cs: 'Povrch', en: 'Finish', es: 'Acabado' },
+    title: { cs: 'Matný. Nikdy mastný.', en: 'Matte. Never greasy.', es: 'Mate. Nunca grasoso.' },
+    body: {
+      cs: 'Hliněná báze pohltí světlo, místo aby ho odrážela — přírodní, suchý vzhled, jako bys nic nepoužil.',
+      en: 'A clay base drinks light instead of bouncing it — a natural, dry look, like you used nothing at all.',
+      es: 'Una base de arcilla absorbe la luz en vez de reflejarla — un look natural y seco, como si no usaras nada.',
     },
+    img: U('photo-1621607512214-68297480165e', 1200),
   },
   {
-    id: 'natural-color',
-    img: IMG.modelMischelle,
-    duration: { cs: '120–180 min', en: '120–180 min', es: '120–180 min' },
-    price: 'Kč 1 690',
-    name: { cs: 'Přírodní Barvení', en: 'Natural Colour', es: 'Color Natural' },
-    desc: {
-      cs: 'Barvení šetrné k vlasům s recepturami bez čpavku a s nízkým obsahem PPD.',
-      en: 'Hair-kind colour built on ammonia-free, low-PPD formulas.',
-      es: 'Coloración respetuosa con fórmulas sin amoníaco y bajo PPD.',
+    id: 'hold',
+    kicker: { cs: 'Držení', en: 'Hold', es: 'Fijación' },
+    title: {
+      cs: 'Drží celý den. Přetvoříš ho kdykoli.',
+      en: 'Holds all day. Restyle it anytime.',
+      es: 'Fija todo el día. Reestiliza cuando quieras.',
     },
+    body: {
+      cs: 'Silné držení, které nezatuhne na kámen. Projeď vlasy prsty ve tři odpoledne a účes se vrátí k životu.',
+      en: 'A strong hold that never sets like concrete. Run your fingers through at 3pm and the shape springs back.',
+      es: 'Fijación fuerte que no se endurece como cemento. Pasa los dedos a las 3pm y la forma vuelve a la vida.',
+    },
+    img: U('photo-1503342217505-b0a15ec3261c', 1200),
   },
   {
-    id: 'regen-treatment',
-    img: IMG.modelBeauty,
-    duration: { cs: '45 min', en: '45 min', es: '45 min' },
-    price: 'Kč 990',
-    name: {
-      cs: 'Regenerační Péče',
-      en: 'Regenerative Care',
-      es: 'Cuidado Regenerativo',
+    id: 'clean',
+    kicker: { cs: 'Čistota', en: 'Clean', es: 'Limpio' },
+    title: {
+      cs: '92 % přírodní. Nula zbytků.',
+      en: '92% natural. Zero residue.',
+      es: '92% natural. Cero residuo.',
     },
-    desc: {
-      cs: 'Rituál hloubkové obnovy s botanickou maskou a masáží pokožky hlavy.',
-      en: 'A deep-restore ritual with a botanical mask and scalp massage.',
-      es: 'Ritual de restauración profunda con mascarilla botánica y masaje.',
+    body: {
+      cs: 'Bez silikonů, bez sulfátů, bez parabenů. Vymyje se jedním mytím — žádný povlak, žádné bílé vločky.',
+      en: 'No silicones, no sulfates, no parabens. Rinses out in a single wash — no coating, no white flakes.',
+      es: 'Sin siliconas, sin sulfatos, sin parabenos. Se enjuaga en un solo lavado — sin película, sin residuo blanco.',
     },
-  },
-  {
-    id: 'consultation',
-    img: IMG.hairMacro,
-    duration: { cs: '30 min', en: '30 min', es: '30 min' },
-    price: { cs: 'Zdarma', en: 'Free', es: 'Gratis' },
-    name: {
-      cs: 'Konzultace Vlasů',
-      en: 'Hair Consultation',
-      es: 'Consulta Capilar',
-    },
-    desc: {
-      cs: 'Analýza vlasů a pokožky hlavy a osobní plán péče — bez závazků.',
-      en: 'A hair-and-scalp analysis with a personal care plan — no strings.',
-      es: 'Análisis de cabello y cuero cabelludo con un plan personal — sin compromiso.',
-    },
-  },
-  {
-    id: 'bridal',
-    img: IMG.modelEditorial,
-    duration: { cs: '90 min', en: '90 min', es: '90 min' },
-    price: 'Kč 2 200',
-    name: { cs: 'Svatební Účes', en: 'Bridal Styling', es: 'Peinado de Novia' },
-    desc: {
-      cs: 'Účes pro váš velký den, včetně zkoušky a péče o vlasy předem.',
-      en: 'Styling for your big day, including a trial and pre-event care.',
-      es: 'Peinado para tu gran día, con prueba previa y cuidado anticipado.',
-    },
-  },
-  {
-    id: 'scalp-care',
-    img: IMG.hairTexture,
-    duration: { cs: '50 min', en: '50 min', es: '50 min' },
-    price: 'Kč 780',
-    name: {
-      cs: 'Péče o Pokožku Hlavy',
-      en: 'Scalp Care',
-      es: 'Cuidado del Cuero Cabelludo',
-    },
-    desc: {
-      cs: 'Detoxikační ošetření pokožky hlavy bylinným tonikem a peelingem.',
-      en: 'A detoxifying scalp treatment with herbal tonic and exfoliation.',
-      es: 'Tratamiento detox del cuero cabelludo con tónico herbal y exfoliación.',
-    },
+    img: CLAY_TOP,
   },
 ]
 
-/* — Botanical ingredients — */
+/* — Botanical actives inside the clay — */
 export const INGREDIENTS = [
+  {
+    id: 'bentonite',
+    latin: 'Bentonite',
+    name: { cs: 'Česká jílová hlína', en: 'Czech Bentonite Clay', es: 'Arcilla Bentonita Checa' },
+    note: {
+      cs: 'Zemitá báze pro matný povrch a objem od kořínků.',
+      en: 'The earthy base — a matte finish and volume from the root.',
+      es: 'La base terrosa — acabado mate y volumen desde la raíz.',
+    },
+  },
   {
     id: 'hemp',
     latin: 'Cannabis sativa',
     name: { cs: 'Konopný olej', en: 'Hemp Oil', es: 'Aceite de Cáñamo' },
     note: {
-      cs: 'Omega mastné kyseliny pro hloubkovou hydrataci a lesk.',
-      en: 'Omega fatty acids for deep hydration and shine.',
-      es: 'Ácidos grasos omega para hidratación profunda y brillo.',
+      cs: 'Změkčuje hlínu, aby se dala roztírat bez tahání.',
+      en: 'Softens the clay so it spreads without pulling.',
+      es: 'Suaviza la arcilla para que se extienda sin jalar.',
+    },
+  },
+  {
+    id: 'candelilla',
+    latin: 'Euphorbia cerifera',
+    name: { cs: 'Kandelilový vosk', en: 'Candelilla Wax', es: 'Cera de Candelilla' },
+    note: {
+      cs: 'Rostlinný vosk pro pružné, celodenní držení.',
+      en: 'A plant wax for pliable, all-day hold.',
+      es: 'Una cera vegetal para fijación maleable todo el día.',
     },
   },
   {
@@ -248,9 +169,9 @@ export const INGREDIENTS = [
     latin: 'Urtica dioica',
     name: { cs: 'Kopřiva', en: 'Nettle', es: 'Ortiga' },
     note: {
-      cs: 'Posiluje kořínky a podporuje objem.',
-      en: 'Strengthens the root and supports volume.',
-      es: 'Fortalece la raíz y aporta volumen.',
+      cs: 'Posiluje vlas a podporuje zdravou pokožku hlavy.',
+      en: 'Strengthens the strand and supports a healthy scalp.',
+      es: 'Fortalece la hebra y cuida el cuero cabelludo.',
     },
   },
   {
@@ -258,19 +179,9 @@ export const INGREDIENTS = [
     latin: 'Salvia officinalis',
     name: { cs: 'Šalvěj', en: 'Sage', es: 'Salvia' },
     note: {
-      cs: 'Vyrovnává pokožku hlavy a dodává hloubku barvě.',
-      en: 'Balances the scalp and deepens colour.',
-      es: 'Equilibra el cuero cabelludo y realza el color.',
-    },
-  },
-  {
-    id: 'chamomile',
-    latin: 'Matricaria chamomilla',
-    name: { cs: 'Heřmánek', en: 'Chamomile', es: 'Manzanilla' },
-    note: {
-      cs: 'Zklidňuje a rozjasňuje světlé tóny.',
-      en: 'Soothes and brightens light tones.',
-      es: 'Calma e ilumina los tonos claros.',
+      cs: 'Přírodní vůně a rovnováha pro pokožku hlavy.',
+      en: 'Natural scent and balance for the scalp.',
+      es: 'Aroma natural y equilibrio para el cuero cabelludo.',
     },
   },
   {
@@ -278,67 +189,121 @@ export const INGREDIENTS = [
     latin: 'Rosmarinus officinalis',
     name: { cs: 'Rozmarýn', en: 'Rosemary', es: 'Romero' },
     note: {
-      cs: 'Prokrvuje pokožku a osvěžuje.',
+      cs: 'Prokrvuje pokožku hlavy a osvěžuje.',
       en: 'Stimulates the scalp and refreshes.',
       es: 'Estimula el cuero cabelludo y refresca.',
     },
   },
-  {
-    id: 'burdock',
-    latin: 'Arctium lappa',
-    name: { cs: 'Lopuch', en: 'Burdock', es: 'Bardana' },
-    note: {
-      cs: 'Regeneruje a chrání před lámavostí.',
-      en: 'Repairs and guards against breakage.',
-      es: 'Repara y protege contra la rotura.',
-    },
-  },
 ]
 
-/* — Studio ritual steps — */
+/* — How to use (mirrors the instructions printed on the tin) — */
 export const RITUAL = [
   {
     id: '01',
-    name: { cs: 'Konzultace', en: 'Consultation', es: 'Consulta' },
+    name: { cs: 'Navlhči', en: 'Dampen', es: 'Humedece' },
     desc: {
-      cs: 'Posloucháme. Poznáme vaše vlasy, rutinu a cíl.',
-      en: 'We listen. We learn your hair, your routine, your goal.',
-      es: 'Escuchamos. Conocemos tu cabello, tu rutina y tu meta.',
+      cs: 'Lehce navlhči vlasy. Pomáhá to hlínu rovnoměrně rozprostřít.',
+      en: 'Lightly dampen your hair. It helps the clay spread evenly.',
+      es: 'Humedece ligeramente el cabello. Ayuda a repartir la clay de forma uniforme.',
     },
   },
   {
     id: '02',
-    name: { cs: 'Analýza', en: 'Analysis', es: 'Análisis' },
+    name: { cs: 'Rozetři', en: 'Warm it', es: 'Calienta' },
     desc: {
-      cs: 'Zmapujeme strukturu vlasu a stav pokožky hlavy.',
-      en: 'We map the hair fibre and the condition of your scalp.',
-      es: 'Mapeamos la fibra capilar y el estado del cuero cabelludo.',
+      cs: 'Naber množství velikosti hrášku a důkladně rozetři mezi dlaněmi.',
+      en: 'Take a pea-sized amount and rub it thoroughly between your hands.',
+      es: 'Toma una cantidad tamaño chícharo y frótala bien entre las manos.',
     },
   },
   {
     id: '03',
-    name: { cs: 'Rituál', en: 'The Ritual', es: 'El Ritual' },
+    name: { cs: 'Nanes', en: 'Apply', es: 'Aplica' },
     desc: {
-      cs: 'Ošetření pouze z rostlinných receptur, ušité na míru.',
-      en: 'A treatment built only from plant formulas, tailored to you.',
-      es: 'Un tratamiento solo con fórmulas vegetales, hecho a tu medida.',
+      cs: 'Nanes rovnoměrně od kořínků a vytvaruj účes podle sebe.',
+      en: 'Apply evenly from the roots and shape your style as desired.',
+      es: 'Aplica de forma uniforme desde la raíz y da forma a tu estilo.',
     },
   },
   {
     id: '04',
-    name: { cs: 'Výsledek', en: 'The Result', es: 'El Resultado' },
+    name: { cs: 'Přetvoř', en: 'Restyle', es: 'Reestiliza' },
     desc: {
-      cs: 'Vlasy, které vzlínají — a domácí plán, jak to udržet.',
-      en: 'Hair that rises — and a home plan to keep it there.',
-      es: 'Cabello que asciende — y un plan en casa para mantenerlo.',
+      cs: 'Kdykoli během dne projeď vlasy prsty — účes se vrátí zpět.',
+      en: 'Any time of day, run your fingers through — the style comes back.',
+      es: 'A cualquier hora, pasa los dedos — el estilo regresa.',
     },
   },
 ]
 
 /* — Numbers strip — */
 export const STATS = [
-  { value: '100%', label: { cs: 'Přírodní složení', en: 'Natural formula', es: 'Fórmula natural' } },
+  { value: '92%', label: { cs: 'Přírodní složení', en: 'Natural formula', es: 'Fórmula natural' } },
   { value: '0', label: { cs: 'Zbytečných chemikálií', en: 'Needless chemicals', es: 'Químicos innecesarios' } },
-  { value: '12', label: { cs: 'Let řemesla', en: 'Years of craft', es: 'Años de oficio' } },
+  { value: '24h', label: { cs: 'Držení', en: 'Hold', es: 'Fijación' } },
   { value: 'CZ', label: { cs: 'Vyrobeno v Česku', en: 'Made in Czechia', es: 'Hecho en Chequia' } },
+]
+
+/* — Spec table (product page) — */
+export const SPECS = [
+  {
+    label: { cs: 'Povrch', en: 'Finish', es: 'Acabado' },
+    value: { cs: 'Matný, bez lesku', en: 'Matte, no shine', es: 'Mate, sin brillo' },
+  },
+  {
+    label: { cs: 'Držení', en: 'Hold', es: 'Fijación' },
+    value: { cs: 'Silné · 8/10 · přetvořitelné', en: 'Strong · 8/10 · restylable', es: 'Fuerte · 8/10 · reestilizable' },
+  },
+  {
+    label: { cs: 'Vůně', en: 'Scent', es: 'Aroma' },
+    value: { cs: 'Cedr & šalvěj', en: 'Cedar & sage', es: 'Cedro & salvia' },
+  },
+  {
+    label: { cs: 'Báze', en: 'Base', es: 'Base' },
+    value: { cs: 'Česká jílová hlína', en: 'Czech bentonite clay', es: 'Arcilla bentonita checa' },
+  },
+  {
+    label: { cs: 'Balení', en: 'Format', es: 'Formato' },
+    value: { cs: 'Hliníková dóza · 50 / 100 g', en: 'Aluminium tin · 50 / 100 g', es: 'Lata de aluminio · 50 / 100 g' },
+  },
+  {
+    label: { cs: 'Původ', en: 'Origin', es: 'Origen' },
+    value: { cs: 'Vyrobeno v Česku 🇨🇿', en: 'Made in Czechia 🇨🇿', es: 'Hecho en Chequia 🇨🇿' },
+  },
+]
+
+/* — FAQ (product page) — */
+export const FAQ = [
+  {
+    q: { cs: 'Jak silné je držení?', en: 'How strong is the hold?', es: '¿Qué tan fuerte es la fijación?' },
+    a: {
+      cs: 'Silné (8/10), ale poddajné. Udrží tvar celý den, přesto ho kdykoli přetvoříš prsty — nezatuhne na kámen.',
+      en: 'Strong (8/10) but pliable. It holds shape all day, yet you can restyle with your fingers anytime — it never sets like concrete.',
+      es: 'Fuerte (8/10) pero maleable. Mantiene la forma todo el día, pero puedes reestilizar con los dedos cuando quieras — nunca se endurece como cemento.',
+    },
+  },
+  {
+    q: { cs: 'Vymyje se snadno?', en: 'Does it wash out easily?', es: '¿Se enjuaga fácil?' },
+    a: {
+      cs: 'Ano. Bez silikonů a voskových povlaků se vymyje jedním mytím běžným šamponem — žádné bílé vločky.',
+      en: 'Yes. With no silicones or heavy waxes, it rinses out in a single wash with normal shampoo — no white flakes.',
+      es: 'Sí. Sin siliconas ni ceras pesadas, se enjuaga en un solo lavado con champú normal — sin residuo blanco.',
+    },
+  },
+  {
+    q: { cs: 'Je opravdu přírodní?', en: 'Is it really natural?', es: '¿Es realmente natural?' },
+    a: {
+      cs: '92 % složení je rostlinného či minerálního původu. Bez sulfátů, parabenů a syntetických silikonů. Netestováno na zvířatech.',
+      en: '92% of the formula is plant- or mineral-derived. No sulfates, parabens, or synthetic silicones. Never tested on animals.',
+      es: 'El 92% de la fórmula es de origen vegetal o mineral. Sin sulfatos, parabenos ni siliconas sintéticas. No testado en animales.',
+    },
+  },
+  {
+    q: { cs: 'Kdy dorazí?', en: 'When will it arrive?', es: '¿Cuándo llega?' },
+    a: {
+      cs: 'Ukázkový obchod — objednávky se neúčtují. V ostrém provozu: doručení v ČR do 2–3 dnů, po EU do 5–7 dnů.',
+      en: 'This is a demo store — orders are not charged. Live, it would ship in 2–3 days within CZ and 5–7 days across the EU.',
+      es: 'Es una tienda demo — los pedidos no se cobran. En vivo, enviaría en 2–3 días en CZ y 5–7 días en la UE.',
+    },
+  },
 ]

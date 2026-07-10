@@ -1,9 +1,7 @@
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
-import ScrollProgress from '../components/ScrollProgress.jsx'
+import CartDrawer from '../components/CartDrawer.jsx'
 import ScrollToTop from '../components/ScrollToTop.jsx'
-import NoiseOverlay from '../components/NoiseOverlay.jsx'
-import PageLoader from '../components/PageLoader.jsx'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 
 const SKIP = { cs: 'Přejít na obsah', en: 'Skip to content', es: 'Saltar al contenido' }
@@ -11,18 +9,16 @@ const SKIP = { cs: 'Přejít na obsah', en: 'Skip to content', es: 'Saltar al co
 export default function RootLayout({ children }) {
   const { lang } = useI18n()
   return (
-    <div className="relative min-h-screen bg-ink text-porcelain">
+    <div className="relative min-h-screen bg-white text-ink">
       <a
         href="#main"
-        className="sr-only rounded-full font-geo text-sm text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:bg-sage focus:px-5 focus:py-2.5 focus:outline-none focus:ring-2 focus:ring-porcelain"
+        className="sr-only rounded-full font-geo text-sm text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-5 focus:py-2.5 focus:outline-none focus:ring-2 focus:ring-sage"
       >
         {SKIP[lang] || SKIP.en}
       </a>
-      <PageLoader />
-      <NoiseOverlay />
-      <ScrollProgress />
       <ScrollToTop />
       <Navbar />
+      <CartDrawer />
       <main id="main">{children}</main>
       <Footer />
     </div>

@@ -8,15 +8,13 @@ export default function NotFound() {
   const { t } = useI18n()
   return (
     <PageTransition>
-      <section className="flex min-h-[70vh] flex-col items-center justify-center px-6 pt-32 text-center">
-        <span className="text-sage">
-          <Logo size={44} showWord={false} />
-        </span>
-        <h1 className="type-hero mt-8 font-serif font-light text-porcelain">404</h1>
-        <p className="mt-5 font-geo text-[0.72rem] font-medium tracking-[0.28em] text-sage">
+      <section className="flex min-h-[80vh] flex-col items-center justify-center px-6 pt-32 text-center">
+        <Logo className="text-lg text-ink" />
+        <h1 className="type-hero mt-8 font-serif font-semibold text-ink tnum">404</h1>
+        <p className="mt-4 font-geo text-[0.72rem] font-medium tracking-[0.24em] text-sage-deep">
           {t('notFound.title').toUpperCase()}
         </p>
-        <p className="mt-4 max-w-sm font-body font-light text-mist">{t('notFound.body')}</p>
+        <p className="mt-4 max-w-sm font-body font-light text-stone text-pretty">{t('notFound.body')}</p>
         <div className="mt-8">
           <Button to="/" variant="solid" size="md">
             <ArrowLeft size={16} /> {t('notFound.back')}
